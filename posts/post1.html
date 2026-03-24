@@ -1,173 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>~*~ Post 1 ~*~</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jetson Project #1</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
-        
+        :root {
+            --bg: #0a0f1c;
+            --bg-soft: #10182b;
+            --panel: #121c33;
+            --panel-soft: #16223b;
+            --text: #e7edf7;
+            --muted: #9aa8c7;
+            --accent: #7aa2ff;
+            --border: #243557;
+            --shadow: rgba(0, 0, 0, 0.32);
+            --max-width: 860px;
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
-            background: #FF8C00 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="2" fill="%23ff00ff"/><circle cx="20" cy="20" r="1.5" fill="%23ffff00"/><circle cx="80" cy="30" r="1" fill="%2300ffff"/></svg>') repeat;
-            background-size: 50px 50px;
-            animation: bgMove 20s linear infinite;
-            color: #ff00ff;
-            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><circle cx="12" cy="12" r="10" fill="%23ffff00" stroke="%23ff00ff" stroke-width="2"/></svg>'), auto;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(122, 162, 255, 0.12), transparent 28%),
+                linear-gradient(180deg, var(--bg) 0%, #0e1528 100%);
+            color: var(--text);
             min-height: 100vh;
-            padding: 10px;
+            line-height: 1.75;
         }
-        
-        @keyframes bgMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 50px 50px; }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
         }
-        
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
+
+        a:hover {
+            text-decoration: underline;
         }
-        
-        @keyframes rainbow {
-            0% { color: #ff0000; }
-            16% { color: #ff8800; }
-            33% { color: #ffff00; }
-            50% { color: #00ff00; }
-            66% { color: #0088ff; }
-            83% { color: #8800ff; }
-            100% { color: #ff0000; }
-        }
-        
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
+
         .container {
-            max-width: 900px;
+            max-width: var(--max-width);
             margin: 0 auto;
-            background: linear-gradient(45deg, #ffff00, #ff00ff, #00ffff, #ffff00);
-            background-size: 400% 400%;
-            animation: gradientShift 3s ease infinite;
-            border: 8px solid #ff00ff;
-            border-radius: 0;
-            padding: 20px;
-            box-shadow: 0 0 30px #ffff00, inset 0 0 30px #ff00ff;
+            padding: 32px 20px 72px;
         }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .inner-container {
-            background: #000000;
-            border: 5px dashed #ffff00;
-            padding: 20px;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: linear-gradient(90deg, #ffff00, #ff00ff, #00ffff);
-            border: 4px solid #ff00ff;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            color: #ffff00;
-            text-shadow: 
-                0 0 10px #ff00ff,
-                0 0 20px #00ffff,
-                0 0 30px #ff00ff,
-                3px 3px 0px #ff00ff,
-                -3px -3px 0px #00ffff;
-            animation: rainbow 2s linear infinite;
-            margin-bottom: 10px;
-            font-weight: bold;
-            letter-spacing: 3px;
-        }
-        
-        .blink {
-            animation: blink 1s infinite;
-            color: #ffff00;
-            font-weight: bold;
-        }
-        
-        .content {
-            background: #000000;
-            border: 4px solid #00ffff;
-            padding: 20px;
-            margin: 15px 0;
-            color: #00ff00;
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-        
-        .content p {
-            margin-bottom: 15px;
-        }
-        
+
         .back-link {
             display: inline-block;
-            background: linear-gradient(135deg, #ff00ff, #00ffff);
-            color: #ffff00;
-            padding: 10px 20px;
-            text-decoration: none;
-            border: 3px solid #00ff00;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 20px;
-            transition: all 0.3s;
+            margin-bottom: 28px;
+            color: var(--muted);
         }
-        
-        .back-link:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 0 20px #ff00ff;
-            animation: rainbow 1s linear infinite;
+
+        .article-header {
+            margin-bottom: 28px;
         }
-        
-        .sparkle {
+
+        .eyebrow {
             display: inline-block;
-            animation: spin 2s linear infinite;
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-size: 0.86rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
-        
-        .glitter {
-            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
-            background-size: 200% 200%;
-            animation: gradientShift 1s ease infinite;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.08;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin-bottom: 16px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pill {
+            padding: 7px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text);
+            font-size: 0.88rem;
+        }
+
+        .panel {
+            background: linear-gradient(180deg, rgba(18, 28, 51, 0.96), rgba(14, 23, 42, 0.96));
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 12px 32px var(--shadow);
+            margin-bottom: 22px;
+        }
+
+        .panel h2 {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+        }
+
+        .panel p {
+            margin-bottom: 14px;
+        }
+
+        .panel p:last-child {
+            margin-bottom: 0;
+        }
+
+        .panel ul {
+            margin-left: 20px;
+        }
+
+        .panel li + li {
+            margin-top: 10px;
+        }
+
+        .hero-image {
+            width: 100%;
+            display: block;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            margin-bottom: 10px;
+        }
+
+        .caption {
+            color: var(--muted);
+            font-size: 0.93rem;
+        }
+
+        .note {
+            border-left: 3px solid var(--accent);
+            padding-left: 14px;
+            color: var(--muted);
+        }
+
+        .image-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        @media (min-width: 760px) {
+            .image-grid.two {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .button-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 11px 16px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--panel-soft);
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .button:hover {
+            text-decoration: none;
+            border-color: var(--accent);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="inner-container">
-            <header>
-                <h1>~*~ Post 1 ~*~</h1>
-                <p class="blink">★ HELLO WORLD! ★</p>
-            </header>
-            
-            <div class="content">
-                <p><span class="sparkle">★</span> Hey everyone! <span class="sparkle">★</span></p>
-                <p>This is my <span class="glitter">FIRST POST</span> on my awesome blog!</p>
-                <p>I'm so excited to share my thoughts with all of you!</p>
-                <p>Stay tuned for more <span class="blink">AMAZING</span> content!</p>
-                <p style="color: #ff00ff; font-weight: bold; margin-top: 20px;">xoxo</p>
+    <main class="container">
+        <a class="back-link" href="../index.html">← Back to projects</a>
+
+        <header class="article-header">
+            <div class="eyebrow">Project Log</div>
+            <h1>Jetson Project #1</h1>
+            <p class="subtitle">
+                Starting with camera input, runtime structure, and a foundation for a larger sensor-driven system.
+            </p>
+
+            <div class="meta">
+                <span class="pill">Status: In Progress</span>
+                <span class="pill">Hardware: Jetson Orin Nano</span>
+                <span class="pill">Focus: Runtime + Vision</span>
             </div>
-            
-            <a href="../index.html" class="back-link">← Back to Home</a>
-        </div>
-    </div>
+        </header>
+
+        <section class="panel">
+            <img class="hero-image" src="../assets/images/jetson/hero.jpg" alt="Jetson project overview image" />
+            <p class="caption">
+                Replace this with a real image when you have one: your desk setup, Jetson board, connected camera, or a screenshot from the device.
+            </p>
+        </section>
+
+        <section class="panel">
+            <h2>Overview</h2>
+            <p>
+                This page is the starting point for documenting a practical Jetson build instead of leaving the work as scattered experiments.
+                The immediate goal is to get a clean baseline working: camera input, project structure, and a runtime flow that can grow into something more complete.
+            </p>
+            <p>
+                Over time, this page can hold milestone notes, architecture direction, debugging lessons, and progress snapshots.
+            </p>
+        </section>
+
+        <section class="panel">
+            <h2>Current Goal</h2>
+            <ul>
+                <li>Get the Jetson environment into a stable, usable state</li>
+                <li>Bring up camera input reliably</li>
+                <li>Establish a clean C++ project structure</li>
+                <li>Create a runtime loop that can evolve into a producer/consumer model</li>
+            </ul>
+        </section>
+
+        <section class="panel">
+            <h2>Architecture Direction</h2>
+            <p>
+                The current direction is to keep the project simple but structured. A useful split is:
+            </p>
+            <ul>
+                <li>input layer for camera and future sensors</li>
+                <li>runtime layer for orchestration and timing</li>
+                <li>processing layer for image or signal handling</li>
+                <li>output layer for logs, UI hooks, or future actions</li>
+            </ul>
+            <p class="note">
+                The point is not to overdesign early. It is to avoid building something that becomes confusing the moment a second input or processing stage gets added.
+            </p>
+        </section>
+
+        <section class="panel">
+            <h2>Progress Images</h2>
+            <div class="image-grid two">
+                <div>
+                    <img class="hero-image" src="../assets/images/jetson/setup.jpg" alt="Jetson hardware setup" />
+                    <p class="caption">Placeholder for a hardware setup photo.</p>
+                </div>
+                <div>
+                    <img class="hero-image" src="../assets/images/jetson/diagram.png" alt="Jetson architecture diagram" />
+                    <p class="caption">Placeholder for an architecture sketch or data-flow diagram.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Notes So Far</h2>
+            <p>
+                This is a good place to keep short and honest updates. The most useful project pages show the rough edges too:
+                what slowed progress, what changed, what worked, and what the next step is.
+            </p>
+            <ul>
+                <li>What is working today?</li>
+                <li>What is still rough or blocked?</li>
+                <li>What changed in the design?</li>
+                <li>What is the next milestone?</li>
+            </ul>
+        </section>
+
+        <section class="panel">
+            <h2>Next Steps</h2>
+            <ul>
+                <li>Document the first stable image capture path</li>
+                <li>Add one real architecture diagram</li>
+                <li>Record the initial project directory layout</li>
+                <li>Write the next update after the first end-to-end demo</li>
+            </ul>
+
+            <div class="button-row">
+                <a class="button" href="../index.html">Back Home</a>
+                <a class="button" href="https://github.com/loganhutcheson/jetson-runtime" target="_blank" rel="noopener noreferrer">View Repository</a>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
