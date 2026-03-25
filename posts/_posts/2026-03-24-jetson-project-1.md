@@ -7,6 +7,8 @@ title: Jetson Project #1
 
 Starting a Jetson project focused on camera input and system structure.
 
+![Welcome Image](/assets/images/jetson/welcome.jpg)
+
 ---
 
 ## Setup
