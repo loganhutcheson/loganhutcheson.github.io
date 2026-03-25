@@ -1,19 +1,19 @@
 ---
 layout: post
-title: Jetson Project #1
+title: "Jetson Project #1"
 ---
 
 ## Overview
 
 Starting a Jetson project focused on camera input and system structure.
 
-![Welcome Image](/assets/images/jetson/welcome.jpg)
+![Welcome Image]({{ '/assets/images/jetson/welcome.jpg' | relative_url }})
 
 ---
 
 ## Setup
 
-![Jetson setup](/assets/images/jetson/setup.jpg)
+This section still references a setup photo that has not been added yet.
 
 ---
 
