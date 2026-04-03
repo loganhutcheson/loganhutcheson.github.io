@@ -1,0 +1,29 @@
+#!/bin/sh
+set -eu
+
+ROOT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+
+found=0
+
+for pid in $(ps -axo pid=,command= | awk -v root="$ROOT_DIR" 'index($0, root) && index($0, "jekyll serve") { print $1 }'); do
+    kill "$pid" 2>/dev/null || true
+    echo "Stopped local preview process (pid $pid)"
+    found=1
+done
+
+for port in 4000 35729; do
+    for pid in $(lsof -tiTCP:"$port" -sTCP:LISTEN 2>/dev/null || true); do
+        command=$(ps -p "$pid" -o command= 2>/dev/null || true)
+        case "$command" in
+            *"$ROOT_DIR"*jekyll*serve*|*"$ROOT_DIR"*ruby*jekyll*serve*)
+                kill "$pid" 2>/dev/null || true
+                echo "Stopped local preview process on port $port (pid $pid)"
+                found=1
+                ;;
+        esac
+    done
+done
+
+if [ "$found" -eq 0 ]; then
+    echo "No local preview process found for this repo."
+fi

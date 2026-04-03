@@ -4,7 +4,36 @@ set -eu
 ROOT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 cd "$ROOT_DIR"
 
-if command -v docker >/dev/null 2>&1; then
+stop_repo_preview() {
+    for pid in $(ps -axo pid=,command= | awk -v root="$ROOT_DIR" 'index($0, root) && index($0, "jekyll serve") { print $1 }'); do
+        kill "$pid" 2>/dev/null || true
+    done
+
+    for port in 4000 35729; do
+        for pid in $(lsof -tiTCP:"$port" -sTCP:LISTEN 2>/dev/null || true); do
+            command=$(ps -p "$pid" -o command= 2>/dev/null || true)
+            case "$command" in
+                *"$ROOT_DIR"*jekyll*serve*|*"$ROOT_DIR"*ruby*jekyll*serve*)
+                    kill "$pid" 2>/dev/null || true
+                    ;;
+            esac
+        done
+    done
+
+    sleep 1
+}
+
+find_open_port() {
+    port=$1
+
+    while ! ruby -rsocket -e 'host = ARGV[0]; port = Integer(ARGV[1]); server = TCPServer.new(host, port); server.close' 127.0.0.1 "$port" >/dev/null 2>&1; do
+        port=$((port + 1))
+    done
+
+    echo "$port"
+}
+
+if command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1; then
     exec docker compose up
 fi
 
@@ -14,6 +43,19 @@ export PATH
 export BUNDLE_APP_CONFIG="$ROOT_DIR/.bundle"
 export BUNDLE_PATH="$ROOT_DIR/vendor/bundle"
 
+stop_repo_preview
+JEKYLL_PORT=${PORT:-$(find_open_port 4000)}
+SERVE_ARGS="--host 127.0.0.1 --port $JEKYLL_PORT"
+
+if [ "${LIVERELOAD:-0}" = "1" ]; then
+    LIVERELOAD_PORT=${LIVERELOAD_PORT:-$(find_open_port 35729)}
+    SERVE_ARGS="$SERVE_ARGS --livereload --livereload-port $LIVERELOAD_PORT"
+fi
+
+if [ "$JEKYLL_PORT" != "4000" ]; then
+    echo "Starting preview on http://127.0.0.1:$JEKYLL_PORT"
+fi
+
 bundle _2.3.27_ config set --local path "$BUNDLE_PATH"
 bundle _2.3.27_ install
-exec bundle _2.3.27_ exec jekyll serve --host 127.0.0.1 --livereload
+exec bundle _2.3.27_ exec jekyll serve $SERVE_ARGS
