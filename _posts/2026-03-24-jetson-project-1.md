@@ -5,6 +5,8 @@ title: "Jetson Runtime / Posture Pipeline"
 
 ![Jetson Orin Nano with an IMX219 camera and status display]({{ '/assets/images/jetson/irl_setup.jpg' | relative_url }})
 
+![Live camera detection with person confidence and position overlay]({{ '/assets/images/jetson/posture-overlay.jpg' | relative_url }})
+
 ## Technical stack
 
 - **Compute:** NVIDIA Jetson Orin Nano
