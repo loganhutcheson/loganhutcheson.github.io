@@ -12,7 +12,7 @@
 
     <style>
         :root {
-            --bg: #1a1b26;
+            --bg: #050507;
             --panel: #1f2335;
             --panel-hover: #24283b;
             --text: #c0caf5;
@@ -34,20 +34,46 @@
 
         body {
             font-family: "JetBrains Mono", monospace;
-            background:
-                linear-gradient(rgba(122, 162, 247, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(122, 162, 247, 0.035) 1px, transparent 1px),
-                var(--bg);
-            background-size: 32px 32px;
+            background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before,
+        body::after {
+            border: 2px solid rgba(255, 56, 174, 0.72);
+            border-radius: 50%;
+            box-shadow:
+                0 0 18px rgba(255, 56, 174, 0.7),
+                0 0 54px rgba(255, 56, 174, 0.38),
+                inset 0 0 26px rgba(255, 56, 174, 0.2);
+            content: "";
+            left: -12vw;
+            pointer-events: none;
+            position: fixed;
+            top: -24vw;
+            width: 44vw;
+            height: 44vw;
+            z-index: 0;
+        }
+
+        body::after {
+            border-color: rgba(247, 118, 201, 0.58);
+            height: 31vw;
+            left: 3vw;
+            top: -15vw;
+            width: 31vw;
         }
 
         .container {
             max-width: var(--max-width);
             margin: 0 auto;
             padding: 40px 20px 72px;
+            position: relative;
+            z-index: 1;
         }
 
         .header {
