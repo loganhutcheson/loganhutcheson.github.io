@@ -4,46 +4,161 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ page.title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg: #1a1b26;
+            --surface: #1f2335;
+            --surface-raised: #24283b;
+            --border: #3b4261;
+            --text: #c0caf5;
+            --muted: #9aa5ce;
+            --blue: #7aa2f7;
+            --cyan: #7dcfff;
+            --green: #9ece6a;
+            --purple: #bb9af7;
+            --yellow: #e0af68;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Inter, system-ui, sans-serif;
-            background: #0a0f1c;
-            color: #e7edf7;
-            line-height: 1.7;
-            padding: 32px 20px;
-            max-width: 800px;
+            font-family: "JetBrains Mono", monospace;
+            background:
+                linear-gradient(rgba(122, 162, 247, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(122, 162, 247, 0.035) 1px, transparent 1px),
+                var(--bg);
+            background-size: 32px 32px;
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.75;
+            padding: 48px 24px 80px;
+            max-width: 880px;
             margin: auto;
         }
 
         a {
-            color: #7aa2ff;
+            color: var(--cyan);
+            text-decoration-color: rgba(125, 207, 255, 0.45);
+            text-underline-offset: 0.2em;
+        }
+
+        a:hover {
+            color: var(--blue);
+            text-decoration-color: currentColor;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            color: var(--blue);
+            font-size: clamp(2rem, 6vw, 3.35rem);
+            line-height: 1.12;
+            letter-spacing: -0.06em;
+            margin: 18px 0 28px;
         }
 
         h2 {
-            margin-top: 24px;
-            margin-bottom: 10px;
+            color: var(--purple);
+            font-size: 1.15rem;
+            letter-spacing: 0.02em;
+            margin: 42px 0 16px;
+        }
+
+        h2::before {
+            color: var(--border);
+            content: "## ";
         }
 
         p {
-            margin-bottom: 14px;
+            margin: 0 0 18px;
+        }
+
+        strong {
+            color: var(--yellow);
+            font-weight: 600;
+        }
+
+        code {
+            background: var(--surface-raised);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--green);
+            font-family: inherit;
+            font-size: 0.9em;
+            padding: 0.12em 0.38em;
+        }
+
+        ul {
+            background: rgba(31, 35, 53, 0.84);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            list-style: square;
+            margin: 0 0 24px;
+            padding: 18px 22px 18px 44px;
+        }
+
+        li {
+            margin: 0 0 11px;
+            padding-left: 5px;
+        }
+
+        li:last-child {
+            margin-bottom: 0;
+        }
+
+        li::marker {
+            color: var(--blue);
+            font-size: 0.82em;
         }
 
         img {
-            width: 100%;
-            border-radius: 12px;
-            margin: 16px 0;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: block;
+            height: auto;
+            margin: 26px 0;
+            width: 50%;
         }
 
         .back {
-            margin-bottom: 20px;
             display: inline-block;
-            color: #9aa8c7;
+            color: var(--muted);
+            font-size: 0.88rem;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            color: var(--cyan);
+        }
+
+        .project-meta {
+            border-left: 2px solid var(--green);
+            color: var(--muted);
+            font-size: 0.88rem;
+            margin-bottom: 30px;
+            padding: 4px 0 4px 16px;
+        }
+
+        .project-meta strong {
+            color: var(--green);
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 28px 18px 56px;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            ul {
+                padding-left: 36px;
+            }
         }
     </style>
 </head>

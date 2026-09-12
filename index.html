@@ -6,16 +6,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg: #0a0f1c;
-            --panel: #121c33;
-            --panel-hover: #172540;
-            --text: #e7edf7;
-            --muted: #9aa8c7;
-            --accent: #7aa2ff;
-            --border: #243557;
+            --bg: #1a1b26;
+            --panel: #1f2335;
+            --panel-hover: #24283b;
+            --text: #c0caf5;
+            --muted: #9aa5ce;
+            --accent: #7aa2f7;
+            --cyan: #7dcfff;
+            --green: #9ece6a;
+            --purple: #bb9af7;
+            --border: #3b4261;
             --shadow: rgba(0, 0, 0, 0.32);
             --max-width: 1000px;
         }
@@ -27,10 +33,12 @@
         }
 
         body {
-            font-family: Inter, system-ui, sans-serif;
+            font-family: "JetBrains Mono", monospace;
             background:
-                radial-gradient(circle at top left, rgba(122, 162, 255, 0.12), transparent 28%),
-                linear-gradient(180deg, var(--bg) 0%, #0e1528 100%);
+                linear-gradient(rgba(122, 162, 247, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(122, 162, 247, 0.035) 1px, transparent 1px),
+                var(--bg);
+            background-size: 32px 32px;
             color: var(--text);
             min-height: 100vh;
             line-height: 1.6;
@@ -47,7 +55,9 @@
         }
 
         .header h1 {
+            color: var(--accent);
             font-size: clamp(2rem, 5vw, 3.2rem);
+            letter-spacing: -0.055em;
             line-height: 1.1;
             margin-bottom: 12px;
         }
@@ -68,7 +78,7 @@
             width: 100%;
             background: var(--panel);
             border: 1px solid var(--border);
-            border-radius: 20px;
+            border-radius: 10px;
             padding: 22px;
             text-decoration: none;
             color: var(--text);
@@ -85,12 +95,13 @@
         .status {
             font-size: 0.8rem;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--green);
             margin-bottom: 8px;
             text-transform: uppercase;
         }
 
         .project-card h2 {
+            color: var(--purple);
             font-size: 1.4rem;
             margin-bottom: 10px;
         }
@@ -109,9 +120,9 @@
         .tag {
             font-size: 0.8rem;
             padding: 5px 10px;
-            border-radius: 999px;
+            border-radius: 5px;
             border: 1px solid var(--border);
-            color: var(--text);
+            color: var(--cyan);
         }
 
         footer {
@@ -140,7 +151,7 @@
             <!-- Jekyll-generated post link -->
             <a class="project-card" href="{{ '/2026/03/24/jetson-project-1.html' | relative_url }}">
                 <div class="status">Retired for now</div>
-                <h2>Jetson Posture System</h2>
+                <h2>Jetson Runtime / Posture Pipeline</h2>
                 <p>
                     A two-camera Jetson project for pose inference, posture classification,
                     hardware feedback, and history tracking.
