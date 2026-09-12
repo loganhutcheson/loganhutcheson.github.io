@@ -1,7 +1,9 @@
 ---
 layout: post
-title: "Jetson Runtime / Posture Pipeline"
+title: "Jetson-based posture tracker"
 ---
+
+[github.com/loganhutcheson/jetson-runtime](https://github.com/loganhutcheson/jetson-runtime)
 
 <div class="image-row">
   <img src="{{ '/assets/images/jetson/irl_setup.jpg' | relative_url }}" alt="Jetson Orin Nano with an IMX219 camera and status display">
