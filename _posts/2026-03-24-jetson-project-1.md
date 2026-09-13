@@ -3,7 +3,7 @@ layout: post
 title: "Jetson-based posture tracker"
 ---
 
-[github.com/loganhutcheson/jetson-runtime](https://github.com/loganhutcheson/jetson-runtime)
+[github.com/loganhutcheson/jetson-posture](https://github.com/loganhutcheson/jetson-posture)
 
 <div class="image-row">
   <img src="{{ '/assets/images/jetson/irl_setup.jpg' | relative_url }}" alt="Jetson Orin Nano with an IMX219 camera and status display">
