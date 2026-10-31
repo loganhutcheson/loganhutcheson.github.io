@@ -10,4 +10,6 @@ exclude:
   - docker-compose.yml
   - bin
   - vendor
-  - resume
+  - resume/
+include:
+  - resume.pdf
