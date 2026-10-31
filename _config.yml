@@ -1,2 +1,13 @@
-title: Projects
+title: Logan Hutcheson
+description: Embedded systems, Linux, and networking
+url: https://loganhutcheson.com
 markdown: kramdown
+exclude:
+  - agent-journal
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - docker-compose.yml
+  - bin
+  - vendor
+  - resume

@@ -1,0 +1,42 @@
+\documentclass{resume}
+\usepackage[margin=.5in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage[T1]{fontenc}
+\name{logan hutcheson}
+\address{(706) 714-0527 \quad $\diamond$ \quad \href{mailto:loganchutcheson@gmail.com}{loganchutcheson@gmail.com}}
+\address{\href{https://loganhutcheson.com}{loganhutcheson.com} \quad $\diamond$ \quad \href{https://github.com/loganhutcheson}{github} \quad $\diamond$ \quad \href{https://www.linkedin.com/in/loganhutcheson/}{linkedin}}
+\begin{document}
+\begin{rSection}{experience}
+\begin{rSubsection}{software engineer, Cisco Systems}{jun 2026 -- present}{Research Triangle Park, NC}{}
+\item brought up NVIDIA ConnectX-8 NICs on Grace servers; debugged PCIe, drivers, and Ethernet.
+\item integrated DPDK workloads and built unattended nightly and pre-commit router validation.
+\end{rSubsection}
+\begin{rSubsection}{software engineer, Cisco Systems}{feb 2021 -- may 2025}{San Francisco Bay Area, CA}{}
+\item firmware lead for CW9162, CW9163, and CW9179 Wi-Fi 6E/7 access points, from Qualcomm platform bring-up through manufacturing handoff.
+\item developed Linux drivers and U-Boot components; shipped crash-dump collection with Qualcomm.
+\item maintained OpenWrt and Yocto/BitBake builds.
+\end{rSubsection}
+\begin{rSubsection}{software engineer intern, Cisco Systems}{may -- aug 2020}{}{}
+\item built unit-testing infrastructure and automation APIs for a Docker-based test platform.
+\end{rSubsection}
+\begin{rSubsection}{ORISE research fellow, U.S. EPA}{oct 2017 -- may 2020}{}{}
+\item conducted metabolomics research and maintained NMR instrumentation.
+\end{rSubsection}
+\end{rSection}
+\begin{rSection}{selected project}
+\textbf{\href{https://github.com/loganhutcheson/jetson-posture}{jetson posture system}} \hfill C++20 / Python
+\begin{list}{$\cdot$}{\leftmargin=1em \itemsep=-0.5em}
+\item integrated CSI cameras, I\textsuperscript{2}C sensors, OLED, and GPIO feedback on Jetson Orin Nano.
+\item built a concurrent sensor runtime and Python pose pipeline with SQLite history and systemd services.
+\end{list}
+\end{rSection}
+\begin{rSection}{skills}
+C, C++, Python, Shell, Go; Linux, U-Boot, OpenWrt, Yocto/BitBake. \\
+PCIe, I\textsuperscript{2}C, JTAG; Ethernet, DPDK, LLDP/CDP, PoE. \\
+GDB, Wireshark, tcpdump, Git, Docker. CWNA certified.
+\end{rSection}
+\begin{rSection}{education}
+\textbf{University of Georgia, honors program} \hfill 2016 -- 2020 \\
+B.S. computer science $\diamond$ B.S. biology $\diamond$ Phi Beta Kappa
+\end{rSection}
+\end{document}

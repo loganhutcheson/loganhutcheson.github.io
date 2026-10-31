@@ -1,204 +1,53 @@
 ---
 ---
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Projects</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg: #050507;
-            --panel: #1f2335;
-            --panel-hover: #24283b;
-            --text: #c0caf5;
-            --muted: #9aa5ce;
-            --accent: #7aa2f7;
-            --cyan: #7dcfff;
-            --green: #9ece6a;
-            --purple: #bb9af7;
-            --border: #3b4261;
-            --shadow: rgba(0, 0, 0, 0.32);
-            --max-width: 1000px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: "JetBrains Mono", monospace;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        body::before,
-        body::after {
-            border: 7px solid rgba(255, 56, 174, 0.78);
-            border-radius: 50%;
-            box-shadow:
-                0 0 16px rgba(255, 56, 174, 0.72),
-                0 0 48px rgba(255, 56, 174, 0.34),
-                inset 0 0 20px rgba(255, 56, 174, 0.18);
-            content: "";
-            height: 28vw;
-            left: -8vw;
-            pointer-events: none;
-            position: fixed;
-            top: -13vw;
-            width: 28vw;
-            z-index: 0;
-        }
-
-        body::after {
-            border-color: rgba(247, 118, 201, 0.72);
-            left: 14vw;
-        }
-
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 40px 20px 72px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .header {
-            margin-bottom: 40px;
-        }
-
-        .header h1 {
-            color: var(--accent);
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            letter-spacing: -0.055em;
-            line-height: 1.1;
-            margin-bottom: 12px;
-        }
-
-        .header p {
-            color: var(--muted);
-            max-width: 720px;
-        }
-
-        .projects {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .project-card {
-            display: block;
-            width: 100%;
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 22px;
-            text-decoration: none;
-            color: var(--text);
-            box-shadow: 0 10px 30px var(--shadow);
-            transition: all 0.2s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-2px);
-            background: var(--panel-hover);
-            border-color: var(--accent);
-        }
-
-        .status {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--green);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .project-card h2 {
-            color: var(--purple);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .project-card p {
-            color: var(--muted);
-            margin-bottom: 14px;
-        }
-
-        .tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            font-size: 0.8rem;
-            padding: 5px 10px;
-            border-radius: 5px;
-            border: 1px solid var(--border);
-            color: var(--cyan);
-        }
-
-        footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logan Hutcheson — Embedded Systems &amp; Networking</title>
+<meta name="description" content="Software engineer working on embedded Linux, platform bring-up, and networking. selected projects in Jetson sensor integration, distributed systems, and image editing.">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 </head>
-
 <body>
-    <main class="container">
-
-        <section class="header">
-            <h1>Logan Hutcheson</h1>
-            <p>
-                Embedded systems, networking, and applied ML projects.
-            </p>
-        </section>
-
-        <section class="projects">
-
-            <!-- Jekyll-generated post link -->
-            <a class="project-card" href="{{ '/2026/03/24/jetson-project-1.html' | relative_url }}">
-                <h2>Jetson-based posture tracker</h2>
-                <p>Real-time computer vision and sensor system built on NVIDIA Jetson Orin Nano.</p>
-
-                <div class="tags">
-                    <span class="tag">YOLO</span>
-                    <span class="tag">Jetson</span>
-                    <span class="tag">IMX Camera</span>
-                </div>
-            </a>
-
-            <a class="project-card" href="{{ '/2026/09/12/roblox-clothing-generator.html' | relative_url }}">
-                <h2>Roblox clothing generator</h2>
-                <p>Generative image pipeline for creating and editing 3D-ready Roblox clothing textures.</p>
-
-                <div class="tags">
-                    <span class="tag">FLUX.2</span>
-                    <span class="tag">Qwen</span>
-                    <span class="tag">LoRA</span>
-                </div>
-            </a>
-
-        </section>
-
-        <footer>
-            Hosted on GitHub Pages.
-        </footer>
-
-    </main>
+<main>
+<header>
+<p class="eyebrow">embedded systems · Linux · networking</p>
+<h1>logan hutcheson</h1>
+<p class="intro">software engineer working across hardware and Linux.</p>
+<p class="muted">at Cisco: platform bring-up, drivers, and networking.</p>
+<nav aria-label="Contact and profiles">
+<a href="mailto:loganchutcheson@gmail.com">email</a>
+<a href="https://github.com/loganhutcheson">github</a>
+<a href="https://www.linkedin.com/in/loganhutcheson/">linkedin</a>
+<a href="{{ '/resume.pdf' | relative_url }}">résumé</a>
+</nav>
+</header>
+<section aria-labelledby="projects">
+<h2 id="projects">selected projects</h2>
+<article class="project">
+<span class="number" aria-hidden="true">01</span><div>
+<p class="meta">C++20 / Python / Linux</p>
+<h3>jetson posture system</h3>
+<p>camera bring-up, I²C peripherals, and a C++ sensor runtime. Python pose inference with a local dashboard.</p>
+<div class="project-links"><a href="{{ '/2026/03/24/jetson-project-1.html' | relative_url }}">notes →</a><a href="https://github.com/loganhutcheson/jetson-posture">source</a></div>
+</div></article>
+<article class="project">
+<span class="number" aria-hidden="true">02</span><div>
+<p class="meta">Go / RPC / concurrency</p>
+<h3>distributed systems</h3>
+<p>Go labs covering RPC, retries, scheduling, and consensus. Raft remains a work in progress.</p>
+<div class="project-links"><a href="https://github.com/loganhutcheson/distributed-systems">code + notes →</a></div>
+</div></article>
+<article class="project">
+<span class="number" aria-hidden="true">03</span><div>
+<p class="meta">Python / TypeScript / image processing</p>
+<h3>roblox texture editor</h3>
+<p>guided image edits with masks, texture compositing, and a 3D avatar preview.</p>
+<div class="project-links"><a href="{{ '/2026/09/12/roblox-clothing-generator.html' | relative_url }}">notes →</a></div>
+</div></article>
+</section>
+<footer>Research Triangle Park, NC</footer>
+</main>
 </body>
 </html>
