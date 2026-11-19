@@ -27,3 +27,10 @@ h1{color:#f92672}h2,h3{color:#a6e22e}.eyebrow{color:#e6db74}.project .meta{color
   .workflow-graph .branch { grid-row: span 2; align-self: start; }
   .workflow-graph .use { grid-column: 2; }
 }
+
+.project h3 a { color: inherit; text-decoration: none; }
+.project h3 a span { color: var(--muted); font-size: .78em; }
+.project h3 a:is(:hover, :focus-visible) { text-decoration: underline; }
+.image-row a { display: grid; align-items: center; }
+.image-row img { display: block; }
+#projects { scroll-margin-top: 1.25rem; }

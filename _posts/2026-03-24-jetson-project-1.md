@@ -9,8 +9,8 @@ camera bring-up, sensors, and pose inference on Jetson Orin Nano.
 [source + setup](https://github.com/loganhutcheson/jetson-posture)
 
 <div class="image-row">
-  <img src="{{ '/assets/images/jetson/irl_setup.jpg' | relative_url }}" alt="Jetson with CSI camera and status display">
-  <img src="{{ '/assets/images/jetson/posture-overlay.jpg' | relative_url }}" alt="Camera detection overlay">
+  <a href="{{ '/assets/images/jetson/irl_setup.jpg' | relative_url }}" aria-label="Full image: Jetson with CSI camera and status display"><img src="{{ '/assets/images/jetson/irl_setup.webp' | relative_url }}" width="800" height="1067" alt="Jetson with CSI camera and status display"></a>
+  <a href="{{ '/assets/images/jetson/posture-overlay.jpg' | relative_url }}" aria-label="Full image: Camera detection overlay"><img src="{{ '/assets/images/jetson/posture-overlay.webp' | relative_url }}" width="800" height="450" alt="Camera detection overlay"></a>
 </div>
 
 ## what i built
