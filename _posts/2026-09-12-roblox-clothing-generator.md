@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "roblox texture editor"
+title: "bloxstyle"
 description: "A year-long build across custom Stable Diffusion LoRA training, data augmentation, Modal cloud GPU hosting, Qwen + ComfyUI, and 4-step FLUX.2 precision UV editing."
 ---
 
 my hardest personal build—a year of iterating across three model generations, from training custom Stable Diffusion LoRAs from scratch to shipping a full cloud-hosted web app and finally narrowing to surgical UV editing on a fixed `585 × 559` Roblox shirt template.
 
-[source](https://github.com/loganhutcheson/roblox-clothing-generator)
+[source](https://github.com/loganhutcheson/bloxstyle)
 
 <div class="image-row equal-images">
   <a href="{{ '/assets/images/roblox-clothing/version-1.png' | relative_url }}" aria-label="Full image: Version 1 custom LoRA generated shirt texture"><img src="{{ '/assets/images/roblox-clothing/version-1.webp' | relative_url }}" width="585" height="559" alt="Version 1 custom LoRA generated shirt texture"></a>
@@ -27,7 +27,7 @@ my hardest personal build—a year of iterating across three model generations, 
 ## version 2 — Qwen + ComfyUI on Modal + production web stack
 
 - **model graph:** upgraded to Qwen Image Edit 2509 BF16 (Qwen 2.5-VL 7B encoder + Qwen VAE) wired through a 24-node ComfyUI workflow (`TextEncodeQwenImageEditPlus`) accepting three reference images, accelerated with an 8-step Lightning LoRA and ControlNet Union (DWPose + Depth Anything).
-- **Modal hosting & warm-boot UX:** learned how to package multi-gigabyte diffusion weights and a full ComfyUI graph onto serverless [Modal](https://modal.com/) GPUs—and how to keep the web app feeling responsive by firing background [warm-boot pings](https://github.com/loganhutcheson/roblox-clothing-generator/commit/0d9cbd3) on homepage mount (`warm: true`) to absorb GPU cold starts before a user clicks generate.
+- **Modal hosting & warm-boot UX:** learned how to package multi-gigabyte diffusion weights and a full ComfyUI graph onto serverless [Modal](https://modal.com/) GPUs—and how to keep the web app feeling responsive by firing background [warm-boot pings](https://github.com/loganhutcheson/bloxstyle/commit/0d9cbd3) on homepage mount (`warm: true`) to absorb GPU cold starts before a user clicks generate.
 - **product & billing:** built Google OAuth sign-in, a Prisma database with atomic credit reservation and automatic refunds on upstream errors, and Stripe checkout and webhooks around the inference proxy.
 
 ## version 3 — FLUX.2 Klein 4B, scale-to-zero L40S & watch editor
