@@ -2,7 +2,7 @@
 layout: post
 title: building a workflow
 permalink: /building-a-workflow/
-description: Keyboard-first tools in my macOS and Linux coding workflow.
+description: Keyboard-first tools and design rules behind my macOS and Linux coding workflow.
 ---
 <p>i like my personal and work Macs to feel like the exact same machine. everything below grew out of wanting keyboard-first muscle memory—coordinated palettes, fast window tiling, clean tmux scrollback, and parallel terminal agents without hunting for the mouse.</p>
 
@@ -34,3 +34,14 @@ description: Keyboard-first tools in my macOS and Linux coding workflow.
     </ul>
   </section>
 </div>
+
+<p><a href="{{ '/assets/images/workflow/tmux-copy-mode.png' | relative_url }}" aria-label="Full image: Ghostty and tmux copy-mode status pills with a live terminal agent"><img src="{{ '/assets/images/workflow/tmux-copy-mode.webp' | relative_url }}" width="1366" height="994" style="max-width:640px;width:100%;height:auto;border-radius:8px;display:block;margin:28px 0 8px" alt="Ghostty and tmux copy-mode status pills with a live terminal agent"></a></p>
+<p class="muted" style="font-size:13px">Ghostty + tmux with custom copy-mode pills shared across 19 palettes—here, a terminal agent inspecting its own screenshot to fix the pill fill.</p>
+
+<h2>a few rules that keep it sane</h2>
+<ul>
+  <li><strong>one muscle memory, two machines:</strong> work and personal Macs share the exact same <code>Ctrl+Space</code> Hammerspoon command mode, tmux bindings, and 19 coordinated themes; only app targets and local state differ.</li>
+  <li><strong>stay out of the way:</strong> command mode starts off, exits on click or lock, and passes keys straight through to fullscreen games.</li>
+  <li><strong>scrollback over eye candy:</strong> both Codex and <code>agy</code> run with alternate-screen disabled so native tmux <code>Ctrl+B [</code> copy mode and history search always work.</li>
+  <li><strong>reversible everything:</strong> every installer writes timestamped local backups before touching a config, and personal machines never mix work credentials or repos.</li>
+</ul>
