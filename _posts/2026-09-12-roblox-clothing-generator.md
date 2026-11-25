@@ -4,7 +4,7 @@ title: "bloxstyle"
 description: "A year-long build across custom Stable Diffusion LoRA training, data augmentation, Modal cloud GPU hosting, Qwen + ComfyUI, and 4-step FLUX.2 precision UV editing."
 ---
 
-my hardest personal build—a year of iterating across three model generations, from training custom Stable Diffusion LoRAs from scratch to shipping a full cloud-hosted web app and finally narrowing to surgical UV editing on a fixed `585 × 559` Roblox shirt template.
+my longest-running personal build—a year of iterating across three model generations, from training custom Stable Diffusion LoRAs from scratch to shipping a full cloud-hosted web app and finally narrowing to surgical UV editing on a fixed `585 × 559` Roblox shirt template.
 
 [source](https://github.com/loganhutcheson/bloxstyle)
 
