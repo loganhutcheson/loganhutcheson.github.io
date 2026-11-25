@@ -1,42 +1,56 @@
 \documentclass{resume}
-\usepackage[margin=.5in]{geometry}
+\usepackage[left=0.5in,top=0.45in,right=0.5in,bottom=0.45in]{geometry}
 \usepackage[hidelinks]{hyperref}
 \usepackage[T1]{fontenc}
-\name{logan hutcheson}
-\address{(706) 714-0527 \quad $\diamond$ \quad \href{mailto:loganchutcheson@gmail.com}{loganchutcheson@gmail.com}}
-\address{\href{https://loganhutcheson.com}{loganhutcheson.com} \quad $\diamond$ \quad \href{https://github.com/loganhutcheson}{github} \quad $\diamond$ \quad \href{https://www.linkedin.com/in/loganhutcheson/}{linkedin}}
+
+\name{Logan Hutcheson}
+\address{(706) 714-0527 \quad $\diamond$ \quad \href{mailto:loganchutcheson@gmail.com}{\texttt{loganchutcheson@gmail.com}}}
+\address{\href{https://loganhutcheson.com}{\texttt{loganhutcheson.com}} \quad $\diamond$ \quad \href{https://github.com/loganhutcheson}{\texttt{github.com/loganhutcheson}} \quad $\diamond$ \quad \href{https://www.linkedin.com/in/loganhutcheson/}{\texttt{linkedin.com/in/loganhutcheson}}}
+
 \begin{document}
-\begin{rSection}{experience}
-\begin{rSubsection}{software engineer, Cisco Systems}{jun 2026 -- present}{Research Triangle Park, NC}{}
-\item brought up NVIDIA ConnectX-8 NICs on Grace servers; debugged PCIe, drivers, and Ethernet.
-\item integrated DPDK workloads and built unattended nightly and pre-commit router validation.
+
+\begin{rSection}{PROFESSIONAL EXPERIENCE}
+
+\begin{rSubsection}{Software Engineer, Cisco Systems}{Jun 2026 -- Present}{Research Triangle Park, NC}{}
+\item Implemented physical backplane link statistics for Cisco IOS XE routers, exposing hardware flow-control and congestion counters validated under live traffic
+\item Fixed a NETCONF reload session-teardown defect and IOS XE platform/build issues, verified with packet captures on physical hardware and regression suites
+\item Enabled an Arm Catalyst 8000V baseline over 100 GbE SR-IOV and ported a newer Linux kernel/compiler baseline, profiling traffic bottlenecks and isolating boot failures
+\item Delivered an IOS XE hardware regression suite (pyATS, AEtest, Genie) covering 17 tests across an 8-link physical topology with reusable parsers and automated rollback
 \end{rSubsection}
-\begin{rSubsection}{software engineer, Cisco Systems}{feb 2021 -- may 2025}{San Francisco Bay Area, CA}{}
-\item firmware lead for CW9162, CW9163, and CW9179 Wi-Fi 6E/7 access points, from Qualcomm platform bring-up through manufacturing handoff.
-\item developed Linux drivers and U-Boot components; shipped crash-dump collection with Qualcomm.
-\item maintained OpenWrt and Yocto/BitBake builds.
+
+\begin{rSubsection}{Software Engineer, Cisco Systems}{Feb 2021 -- May 2025}{San Francisco Bay Area, CA}{}
+\item Firmware lead for CW9162, CW9163, and CW9179 Wi-Fi 6E/7 access points on Qualcomm SoCs, owning platform bring-up, firmware development, hardware validation, and manufacturing handoff
+\item Developed Linux kernel drivers and U-Boot components for networking, storage, and I\textsuperscript{2}C peripherals
+\item Developed and shipped minidump and full-dump collection in collaboration with Qualcomm, enabling diagnosis of silent crashes in deployed access points
+\item Maintained OpenWrt and Yocto/BitBake embedded Linux build systems
 \end{rSubsection}
-\begin{rSubsection}{software engineer intern, Cisco Systems}{may -- aug 2020}{}{}
-\item built unit-testing infrastructure and automation APIs for a Docker-based test platform.
+
+\begin{rSubsection}{Software Engineer Intern, Cisco Systems}{May 2020 -- Aug 2020}{}{}
+\item Built a unit-testing framework and automation APIs for a Docker-based virtualized test platform
 \end{rSubsection}
-\begin{rSubsection}{ORISE research fellow, U.S. EPA}{oct 2017 -- may 2020}{}{}
-\item conducted metabolomics research and maintained NMR instrumentation.
+
+\begin{rSubsection}{ORISE Research Fellow, U.S. Environmental Protection Agency}{Oct 2017 -- May 2020}{Athens, GA}{}
+\item Conducted metabolomics research and maintained NMR instrumentation for environmental water analysis
 \end{rSubsection}
+
 \end{rSection}
-\begin{rSection}{selected project}
-\textbf{\href{https://github.com/loganhutcheson/jetson-posture}{jetson posture system}} \hfill C++20 / Python
-\begin{list}{$\cdot$}{\leftmargin=1em \itemsep=-0.5em}
-\item integrated CSI cameras, I\textsuperscript{2}C sensors, OLED, and GPIO feedback on Jetson Orin Nano.
-\item built a concurrent sensor runtime and Python pose pipeline with SQLite history and systemd services.
-\end{list}
+
+\begin{rSection}{TECHNICAL SKILLS}
+\begin{tabular}{@{} >{\bfseries}l @{\hspace{3ex}} p{5.95in} @{}}
+Languages & C, C++, Python, Shell \\
+Systems & Linux, Embedded Linux, Linux Kernel, IOS XE, U-Boot, OpenWrt, Yocto, BitBake \\
+Hardware & Board Bring-Up, Arm64, Qualcomm SoCs, PCIe, SR-IOV, I\textsuperscript{2}C, JTAG \\
+Networking & Ethernet (100 GbE), TCP/IP, UDP, Layer 2/3, NETCONF, LLDP, CDP, PoE \\
+Debugging \& Test & GDB, kernel tracing, early-boot diagnostics, Wireshark, tcpdump, pyATS, Genie, Spirent \\
+Tools & Git, Docker \\
+Certification & CWNA (Certified Wireless Network Administrator) \\
+\end{tabular}
 \end{rSection}
-\begin{rSection}{skills}
-C, C++, Python, Shell, Go; Linux, U-Boot, OpenWrt, Yocto/BitBake. \\
-PCIe, I\textsuperscript{2}C, JTAG; Ethernet, DPDK, LLDP/CDP, PoE. \\
-GDB, Wireshark, tcpdump, Git, Docker. CWNA certified.
+
+\begin{rSection}{EDUCATION}
+\textbf{University of Georgia, Honors Program, Athens, GA} \hfill \textbf{Aug 2016 -- Dec 2020} \\
+B.S. Computer Science \quad $\diamond$ \quad B.S. Biology \\
+Phi Beta Kappa
 \end{rSection}
-\begin{rSection}{education}
-\textbf{University of Georgia, honors program} \hfill 2016 -- 2020 \\
-B.S. computer science $\diamond$ B.S. biology $\diamond$ Phi Beta Kappa
-\end{rSection}
+
 \end{document}
