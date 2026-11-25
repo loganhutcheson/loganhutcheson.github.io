@@ -13,8 +13,8 @@ my hardest personal build—a year of iterating across three model generations, 
 
 ## version 1 — custom dataset, LoRA training & Modal A10G
 
-- **dataset & augmentation:** assembled a seed set of `585 × 559` Roblox shirt templates (`rbx_shirt` trigger captions) and expanded it programmatically with shading passes, rotations, alpha-to-white compositing, and multiple-of-8 tensor padding so a small dataset generalized without breaking UV borders.
-- **custom LoRA training:** wrote PyTorch / Accelerate / Diffusers training loops for both a rank-16 SD 1.5 UNet cross-attention LoRA and a Lineart ControlNet LoRA (`control_v11p_sd15_lineart`, keeping base UNet/VAE/CLIP frozen) to lock generations strictly inside the template panels.
+- **dataset & augmentation:** assembled a **416-shirt** seed set of `585 × 559` Roblox templates (`shirt_set.tar`, 74.7 MB via Git LFS), generated paired `rbx_shirt` caption files, and expanded it into `shirt_set_v2/dataset_shaded` with shading passes, rotations, alpha-to-white compositing, and multiple-of-8 tensor padding (`592 × 560`) so the dataset generalized without breaking UV borders.
+- **custom LoRA training:** hand-rolled PyTorch / Accelerate / Diffusers rank-16 (`alpha = 32`) LoRA layers directly on Stable Diffusion 1.5 UNet `attn2` cross-attention projections (`to_q`, `to_k`, `to_v`, `to_out.0`) plus a separate Lineart ControlNet LoRA (`control_v11p_sd15_lineart`, base UNet/VAE/CLIP frozen), evaluating across 300+ saved checkpoints.
 - **cloud GPU serving:** packaged inference behind a FastAPI `/generate` endpoint hosted on **Modal A10G** GPUs (with Apple Silicon MPS locally), wired to a Next.js frontend deployed on Vercel.
 
 <div class="image-row equal-images">
