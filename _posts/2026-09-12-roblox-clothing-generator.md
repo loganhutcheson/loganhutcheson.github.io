@@ -20,8 +20,8 @@ my longest-running personal build—a year of iterating across three model gener
 - **first cloud deploy:** served it on **Modal A10G** GPUs behind Next.js on Vercel. full-template generation held the UV seams, but regenerating the whole shirt got in the way whenever someone just wanted to tweak one detail.
 
 <div class="image-row equal-images">
-  <a href="{{ '/assets/images/roblox-clothing/lora-chainmail.png' | relative_url }}" aria-label="Full image: Custom LoRA metallic chainmail Roblox shirt texture"><img src="{{ '/assets/images/roblox-clothing/lora-chainmail.webp' | relative_url }}" width="585" height="559" alt="Custom LoRA metallic chainmail Roblox shirt texture"></a>
-  <a href="{{ '/assets/images/roblox-clothing/lora-crimson.png' | relative_url }}" aria-label="Full image: Custom LoRA crimson ribbed Roblox shirt texture"><img src="{{ '/assets/images/roblox-clothing/lora-crimson.webp' | relative_url }}" width="585" height="559" alt="Custom LoRA crimson ribbed Roblox shirt texture"></a>
+  <a href="{{ '/assets/images/roblox-clothing/teaching-shading.png' | relative_url }}" aria-label="Full image: Shaded blue hoodie texture trained via data augmentation"><img src="{{ '/assets/images/roblox-clothing/teaching-shading.webp' | relative_url }}" width="585" height="559" alt="Shaded blue hoodie texture trained via data augmentation"></a>
+  <a href="{{ '/assets/images/roblox-clothing/shirt-gen-001.png' | relative_url }}" aria-label="Full image: Generated crimson and silver mosaic Roblox shirt texture"><img src="{{ '/assets/images/roblox-clothing/shirt-gen-001.webp' | relative_url }}" width="585" height="559" alt="Generated crimson and silver mosaic Roblox shirt texture"></a>
 </div>
 
 ## version 2 — Qwen + ComfyUI on Modal
