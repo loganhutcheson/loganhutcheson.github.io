@@ -1,5 +1,5 @@
 \documentclass{resume}
-\usepackage[left=0.5in,top=0.45in,right=0.5in,bottom=0.45in]{geometry}
+\usepackage[left=0.55in,top=0.55in,right=0.55in,bottom=0.55in]{geometry}
 \usepackage[hidelinks]{hyperref}
 \usepackage[T1]{fontenc}
 
@@ -12,16 +12,16 @@
 \begin{rSection}{PROFESSIONAL EXPERIENCE}
 
 \begin{rSubsection}{Software Engineer, Cisco Systems}{Jun 2026 -- Present}{Research Triangle Park, NC}{}
-\item Implemented physical backplane link statistics for Cisco IOS XE routers, exposing hardware flow-control and congestion counters validated under live traffic
-\item Fixed a NETCONF reload session-teardown defect and IOS XE platform/build issues, verified with packet captures on physical hardware and regression suites
-\item Enabled an Arm Catalyst 8000V baseline over 100 GbE SR-IOV and ported a newer Linux kernel/compiler baseline, profiling traffic bottlenecks and isolating boot failures
-\item Delivered an IOS XE hardware regression suite (pyATS, AEtest, Genie) covering 17 tests across an 8-link physical topology with reusable parsers and automated rollback
+\item Implemented backplane link statistics for Cisco IOS XE routers, validated against live hardware counters
+\item Fixed a NETCONF reload teardown defect and IOS XE platform issues, verified via hardware packet captures
+\item Enabled Arm Catalyst 8000V over 100 GbE SR-IOV and ported a newer Linux kernel, profiling RX bottlenecks
+\item Built a 17-test IOS XE hardware regression suite (pyATS/Genie) on an 8-link topology with auto-rollback
 \end{rSubsection}
 
 \begin{rSubsection}{Software Engineer, Cisco Systems}{Feb 2021 -- May 2025}{San Francisco Bay Area, CA}{}
-\item Firmware lead for CW9162, CW9163, and CW9179 Wi-Fi 6E/7 access points on Qualcomm SoCs, owning platform bring-up, firmware development, hardware validation, and manufacturing handoff
+\item Firmware lead for CW9162, CW9163, and CW9179 Wi-Fi 6E/7 APs on Qualcomm SoCs, bring-up to manufacturing
 \item Developed Linux kernel drivers and U-Boot components for networking, storage, and I\textsuperscript{2}C peripherals
-\item Developed and shipped minidump and full-dump collection in collaboration with Qualcomm, enabling diagnosis of silent crashes in deployed access points
+\item Shipped minidump and full-dump collection with Qualcomm to diagnose silent crashes in deployed APs
 \item Maintained OpenWrt and Yocto/BitBake embedded Linux build systems
 \end{rSubsection}
 
@@ -36,7 +36,7 @@
 \end{rSection}
 
 \begin{rSection}{TECHNICAL SKILLS}
-\begin{tabular}{@{} >{\bfseries}l @{\hspace{3ex}} p{5.95in} @{}}
+\begin{tabular}{@{} >{\bfseries}l @{\hspace{3ex}} p{5.85in} @{}}
 Languages & C, C++, Python, Shell \\
 Systems & Linux, Embedded Linux, Linux Kernel, IOS XE, U-Boot, OpenWrt, Yocto, BitBake \\
 Hardware & Board Bring-Up, Arm64, Qualcomm SoCs, PCIe, SR-IOV, I\textsuperscript{2}C, JTAG \\
