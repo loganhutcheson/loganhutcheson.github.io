@@ -23,6 +23,7 @@ my longest-running personal build—a year of iterating across three model gener
   <a href="{{ '/assets/images/roblox-clothing/teaching-shading.png' | relative_url }}" aria-label="Full image: Shaded blue hoodie texture trained via data augmentation"><img src="{{ '/assets/images/roblox-clothing/teaching-shading.webp' | relative_url }}" width="585" height="559" alt="Shaded blue hoodie texture trained via data augmentation"></a>
   <a href="{{ '/assets/images/roblox-clothing/shirt-gen-001.png' | relative_url }}" aria-label="Full image: Generated crimson and silver mosaic Roblox shirt texture"><img src="{{ '/assets/images/roblox-clothing/shirt-gen-001.webp' | relative_url }}" width="585" height="559" alt="Generated crimson and silver mosaic Roblox shirt texture"></a>
 </div>
+<p class="muted" style="font-size:13px;margin-top:-16px">left: the first run where the LoRA picked up fabric shading from the augmented shading passes; right: a full-template generation.</p>
 
 ## version 2 — Qwen + ComfyUI on Modal
 
