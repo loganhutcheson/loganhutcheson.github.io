@@ -13,10 +13,11 @@ one 8 GB Jetson Orin Nano Super sitting on my desk that keeps getting drafted in
   <a href="{{ '/assets/images/jetson/posture-overlay.jpg' | relative_url }}" aria-label="Full image: Privacy-blurred YOLO detection overlay from the CSI camera pipeline"><img src="{{ '/assets/images/jetson/posture-overlay.webp' | relative_url }}" width="800" height="450" alt="Privacy-blurred YOLO detection overlay from the CSI camera pipeline"></a>
 </div>
 
-## JetPack 7.2.2 OTA & local LLMs (current)
+## JetPack 7.2.2 OTA & local Qwen3.5-9B (current)
 
 - built NVIDIA’s R36.5 → R39.2.2 image OTA and dual-slot bootloader payloads inside a privileged amd64 OrbStack Docker container on my Mac, then flashed both bootloader slots over Tailscale without pulling the NVMe.
-- landed on Ubuntu 24.04.5, kernel `6.8.12-tegra`, and CUDA `13.2` (`nvcc 13.2.86`), verified SM 8.7 kernels, and started prepping the board for small local LLMs and neuron-steering experiments.
+- compiled upstream `llama.cpp` directly on the board (Ubuntu 24.04.5, kernel `6.8.12-tegra`, CUDA `13.2`, SM 8.7) and benchmarked Unsloth’s **Qwen3.5-9B** (4K context, 33/33 layers offloaded, Flash Attention, direct loading to avoid swap): **12.77 tok/s** with `IQ4_XS` (`0.47s` TTFT, `1.13 GiB` RAM headroom) vs. `11.56 tok/s` with `Q4_K_M`.
+- running as a boot-enabled `systemd` user service with idle sleep, exposed privately as a browser chat over Tailscale.
 
 ## real-time TensorRT inference (`JetLink` + comma 4)
 
