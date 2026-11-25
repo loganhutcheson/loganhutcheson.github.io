@@ -1,37 +1,45 @@
 ---
 layout: post
 title: "roblox texture editor"
-description: "Three generations of Roblox shirt generation and precision UV texture editing: SD 1.5 LoRA, Qwen + ComfyUI, and FLUX.2 Klein 4B with a 3D avatar preview."
+description: "A year-long build across custom Stable Diffusion LoRA training, dataset augmentation, Modal cloud GPU hosting, Qwen + ComfyUI, and 4-step FLUX.2 precision UV editing."
 ---
 
-a year-long build across three model generations, narrowing from whole-shirt generation down to a focused problem: edit one clothing detail cleanly across a fixed `585 × 559` Roblox UV template without disturbing the rest of the texture.
+my hardest personal build—a year of iterating across three model generations, from training custom Stable Diffusion LoRAs from scratch to shipping a full cloud-hosted web app and finally narrowing to surgical UV editing on a fixed `585 × 559` Roblox shirt template.
 
 <div class="image-row equal-images">
-  <a href="{{ '/assets/images/roblox-clothing/version-1.png' | relative_url }}" aria-label="Full image: Version 1 generated Roblox shirt texture"><img src="{{ '/assets/images/roblox-clothing/version-1.webp' | relative_url }}" width="585" height="559" alt="Version 1 generated Roblox shirt texture"></a>
-  <a href="{{ '/assets/images/roblox-clothing/version-3.png' | relative_url }}" aria-label="Full image: Version 3 watch editor and 3D avatar preview"><img src="{{ '/assets/images/roblox-clothing/version-3.webp' | relative_url }}" width="800" height="449" alt="Version 3 watch editor and 3D avatar preview"></a>
+  <a href="{{ '/assets/images/roblox-clothing/version-1.png' | relative_url }}" aria-label="Full image: Version 1 custom LoRA generated shirt texture"><img src="{{ '/assets/images/roblox-clothing/version-1.webp' | relative_url }}" width="585" height="559" alt="Version 1 custom LoRA generated shirt texture"></a>
+  <a href="{{ '/assets/images/roblox-clothing/version-3.png' | relative_url }}" aria-label="Full image: Version 3 watch editor and live 3D Roblox avatar preview"><img src="{{ '/assets/images/roblox-clothing/version-3.webp' | relative_url }}" width="800" height="449" alt="Version 3 watch editor and live 3D Roblox avatar preview"></a>
 </div>
 
-## version 1 — SD 1.5 + custom LoRA
+## version 1 — custom dataset, LoRA training & Modal A10G
 
-- curated a custom dataset of Roblox shirt templates paired with captions using a `rbx_shirt` trigger token.
-- trained a rank-16 UNet cross-attention LoRA on Stable Diffusion 1.5 inpainting, paired with Lineart ControlNet and an inpaint mask to hold the `585 × 559` UV layout.
-- served generation from a FastAPI backend on Modal A10G GPUs (with Apple Silicon MPS for local runs) behind a Next.js web app on Vercel.
+- **dataset & augmentation:** assembled a seed set of `585 × 559` Roblox shirt templates (`rbx_shirt` trigger captions) and expanded it programmatically with shading passes, rotations, alpha-to-white compositing, and multiple-of-8 tensor padding so a small dataset generalized without breaking UV borders.
+- **custom LoRA training:** wrote PyTorch / Accelerate / Diffusers training loops for both a rank-16 SD 1.5 UNet cross-attention LoRA and a Lineart ControlNet LoRA (`control_v11p_sd15_lineart`, keeping base UNet/VAE/CLIP frozen) to lock generations strictly inside the template panels.
+- **cloud GPU serving:** packaged inference behind a FastAPI `/generate` endpoint hosted on **Modal A10G** GPUs (with Apple Silicon MPS locally), wired to a Next.js frontend deployed on Vercel.
 
-## version 2 — Qwen + ComfyUI + full web app
+<div class="image-row equal-images">
+  <a href="{{ '/assets/images/roblox-clothing/lora-chainmail.png' | relative_url }}" aria-label="Full image: Custom LoRA metallic chainmail Roblox shirt texture"><img src="{{ '/assets/images/roblox-clothing/lora-chainmail.webp' | relative_url }}" width="585" height="559" alt="Custom LoRA metallic chainmail Roblox shirt texture"></a>
+  <a href="{{ '/assets/images/roblox-clothing/lora-crimson.png' | relative_url }}" aria-label="Full image: Custom LoRA crimson ribbed Roblox shirt texture"><img src="{{ '/assets/images/roblox-clothing/lora-crimson.webp' | relative_url }}" width="585" height="559" alt="Custom LoRA crimson ribbed Roblox shirt texture"></a>
+</div>
 
-- moved to Qwen Image Edit 2509 BF16 (Qwen 2.5-VL 7B encoder + Qwen VAE) wired through a 24-node ComfyUI graph (`TextEncodeQwenImageEditPlus`) accepting three reference images.
-- combined a Lightning LoRA (8 Euler steps, CFG normalization) with ControlNet Union (DW pose and Depth Anything) for layout-aware edits.
-- built the surrounding product stack: Google sign-in, Prisma database with coin credits, Stripe checkout, GPU warm-boot endpoints to absorb cold starts, and an interactive 3D avatar preview.
+## version 2 — Qwen + ComfyUI + production web stack
 
-## version 3 — FLUX.2 Klein 4B + watch editor
+- **model graph:** upgraded to Qwen Image Edit 2509 BF16 (Qwen 2.5-VL 7B encoder + Qwen VAE) orchestrated through a 24-node ComfyUI workflow (`TextEncodeQwenImageEditPlus`) accepting three reference images, accelerated with an 8-step Lightning LoRA and ControlNet Union (DWPose + Depth Anything).
+- **product & billing:** built Google OAuth sign-in, a Prisma database with atomic credit reservation and automatic refunds on upstream failures, Stripe checkout and webhooks, and homepage GPU pre-warm calls to absorb serverless cold starts.
 
-- switched to 4-step FLUX.2 Klein 4B editing through Diffusers on Apple Silicon MPS locally and Modal L40S GPUs remotely.
-- built a TypeScript canvas tool for accessory watch mode with live band-wrap, band-width, and watch-size controls that project wrapped watch geometry across the `F / L / B / R` arm UV faces.
-- sent only a targeted `512 × 512` crop and shape mask to FLUX, then composited the result back through the mask so surrounding shirt pixels stay untouched.
-- rendered immediate 2D template and 3D OBJ avatar previews in Next.js, React, and Three.js.
+## version 3 — FLUX.2 Klein 4B, scale-to-zero L40S & watch editor
+
+- **targeted UV editing:** full-template regeneration fought users whenever they only wanted one crisp accessory. switched to 4-step **FLUX.2 Klein 4B** editing through Diffusers, running identically on local Apple Silicon MPS and an on-demand **Modal L40S** container (`min_containers=0`, 5s scaledown, persistent `modal.Volume` Hugging Face cache).
+- **watch geometry & masking:** built a TypeScript canvas editor with live band-wrap, band-width, and watch-size controls that project wrapped geometry across the `F / L / B / R` arm UV faces, send only a `512 × 512` crop + grayscale mask to FLUX, and composite back through the mask so surrounding shirt pixels stay untouched.
+- **verification & 3D preview:** paired unit-tested UV wrap math and a 10-fixture rotation/pattern benchmark (`-48°` to `142°`) with immediate 2D template and 3D Three.js OBJ avatar previews.
+
+<div class="image-row equal-images">
+  <a href="{{ '/assets/images/roblox-clothing/flux2-inpaint.png' | relative_url }}" aria-label="Full image: Surgical FLUX.2 wrist-watch UV inpaint on a tuxedo shirt template"><img src="{{ '/assets/images/roblox-clothing/flux2-inpaint.webp' | relative_url }}" width="585" height="559" alt="Surgical FLUX.2 wrist-watch UV inpaint on a tuxedo shirt template"></a>
+  <a href="{{ '/assets/images/roblox-clothing/version-3.png' | relative_url }}" aria-label="Full image: Interactive watch editor and live 3D Roblox avatar preview"><img src="{{ '/assets/images/roblox-clothing/version-3.webp' | relative_url }}" width="800" height="449" alt="Interactive watch editor and live 3D Roblox avatar preview"></a>
+</div>
 
 ## what i learned
 
-training a custom LoRA and wiring a 24-node ComfyUI graph worked for full textures, but regenerating the whole template fought the user whenever they wanted one crisp detail. constraining the model to a tight crop, deterministic UV geometry, and strict masked compositing made the tool far faster and more predictable.
+building a dataset with synthetic shading/rotations, training custom UNet and ControlNet LoRAs, and operating serverless GPU backends on Modal taught me how much of applied ML is systems engineering: cold-start latency, container caching, deterministic UV math, and narrow masks mattered more to output quality than chasing bigger models.
 
 source is private.
