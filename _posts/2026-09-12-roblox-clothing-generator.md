@@ -22,10 +22,11 @@ my hardest personal build—a year of iterating across three model generations, 
   <a href="{{ '/assets/images/roblox-clothing/lora-crimson.png' | relative_url }}" aria-label="Full image: Custom LoRA crimson ribbed Roblox shirt texture"><img src="{{ '/assets/images/roblox-clothing/lora-crimson.webp' | relative_url }}" width="585" height="559" alt="Custom LoRA crimson ribbed Roblox shirt texture"></a>
 </div>
 
-## version 2 — Qwen + ComfyUI + production web stack
+## version 2 — Qwen + ComfyUI on Modal + production web stack
 
 - **model graph:** upgraded to Qwen Image Edit 2509 BF16 (Qwen 2.5-VL 7B encoder + Qwen VAE) wired through a 24-node ComfyUI workflow (`TextEncodeQwenImageEditPlus`) accepting three reference images, accelerated with an 8-step Lightning LoRA and ControlNet Union (DWPose + Depth Anything).
-- **product & cloud ops:** built Google OAuth sign-in, a Prisma database with atomic credit reservation and automatic refunds on upstream errors, Stripe checkout and webhooks, and homepage GPU pre-warm calls to absorb serverless cold starts. operating it in production made clear how much latency, container caching, and reliability dominate the actual user experience.
+- **Modal hosting & warm-boot UX:** learned how to package multi-gigabyte diffusion weights and a full ComfyUI graph onto serverless [Modal](https://modal.com/) GPUs—and how to keep the web app feeling responsive by firing background warm-boot pings on homepage mount (`warm: true`) to absorb GPU cold starts before a user clicks generate.
+- **product & billing:** built Google OAuth sign-in, a Prisma database with atomic credit reservation and automatic refunds on upstream errors, and Stripe checkout and webhooks around the inference proxy.
 
 ## version 3 — FLUX.2 Klein 4B, scale-to-zero L40S & watch editor
 
